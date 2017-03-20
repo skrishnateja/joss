@@ -14,5 +14,17 @@ describe 'papers/recent.html.erb' do
       expect(rendered).to have_selector('.paper-title', :count => 3)
       expect(rendered).to have_content "Accepted papers (3)"
     end
+
+    it "displays status buttons" do
+      3.times do
+        create(:paper, :state => "accepted")
+      end
+
+      assign(:papers, Paper.all.paginate(:page => 1, :per_page => 10))
+
+      render :template => "papers/index.html.erb"
+
+      expect(rendered).to have_content "status.svg"
+    end
   end
 end

@@ -1,5 +1,7 @@
 <% if @paper %>
+	<%= status_badge_for(@paper) %>
   <%= link_to image_tag(status_badge_for(@paper)), paper_url(@paper) %>
 <% else %>
+	<%= status_badge_for(@paper) %>
   <%= image_tag(status_badge_for(@paper)) %>
 <% end %>

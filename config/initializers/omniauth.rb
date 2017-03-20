@@ -15,6 +15,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     :scope => '/authenticate'
   },
   :client_options => {
+    :ssl => {:verify => false},
     :site => settings['site'],
     :authorize_url => settings['authorize_url'],
     :token_url => settings['token_url']

@@ -3,6 +3,8 @@ default: &default
   encoding: unicode
   port: <%= ENV['BOXEN_POSTGRESQL_PORT'] || 5432 %>
   host: localhost
+  username: postgres
+  password: k
 
 development:
   <<: *default

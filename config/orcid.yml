@@ -8,11 +8,11 @@ production:
   client_secret: <%= ENV["ORCID_SECRET"] %>
 
 development:
-  site: http://0.0.0.0:3000
+  site: http://localhost:3000
   authorize_url: http://orcid.org/oauth/authorize#show_login
   token_url: http://pub.orcid.org/oauth/token
-  client_id: <%= ENV["ORCID_KEY"] %>
-  client_secret: <%= ENV["ORCID_SECRET"] %>
+  client_id: APP-GNG60TQ72FJQLPUV
+  client_secret: 3cf2ff51-7861-43e1-9313-f5db4fbaa279
 
 test:
   site: http://0.0.0.0:3000

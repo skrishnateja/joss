@@ -11,11 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160918002623) do
+ActiveRecord::Schema.define(version: 20170315153324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
+
+  create_table "issues", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.integer  "paper_id"
+    t.string   "state",      default: "open"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "issues", ["paper_id"], name: "index_issues_on_paper_id", using: :btree
+  add_index "issues", ["user_id"], name: "index_issues_on_user_id", using: :btree
 
   create_table "papers", force: :cascade do |t|
     t.string   "title"
@@ -32,6 +44,7 @@ ActiveRecord::Schema.define(version: 20160918002623) do
     t.string   "doi"
     t.text     "paper_body"
     t.integer  "meta_review_issue_id"
+    t.integer  "paper_id"
   end
 
   add_index "papers", ["sha"], name: "index_papers_on_sha", using: :btree

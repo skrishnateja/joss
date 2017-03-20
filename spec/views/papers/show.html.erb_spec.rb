@@ -52,5 +52,17 @@ describe 'papers/show.html.erb' do
 
       expect(rendered).to have_content "View review issue"
     end
+
+    it "displays status buttons" do
+      user = create(:user, :admin => true)
+      allow(view).to receive_message_chain(:current_user).and_return(user)
+
+      paper = create(:paper, :state => "submitted", :review_issue_id => 123)
+      assign(:paper, paper)
+
+      render :template => "papers/show.html.erb"
+
+      expect(rendered).to have_content "View review issue"
+    end
   end
 end

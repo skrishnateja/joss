@@ -21,7 +21,6 @@
       </div>
       <% end %>
     </div>
-    <%= @issues.created_at %>
-    
+    <%= render :partial => "papers/issue", :locals => { :issues => @issues, :comments => @comments } %>
   </div>
 </div>

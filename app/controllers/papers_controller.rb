@@ -136,11 +136,15 @@ class PapersController < ApplicationController
   def show
     if params[:doi] && valid_doi?
       @paper = Paper.find_by_doi(params[:doi])
-      @issues = Issue.find(1)
     else
       @paper = Paper.find_by_sha(params[:id])
-      @issues = Issue.find(1)
     end
+      @issues = Issue.where(paper_id: @paper.id)
+      @comments = nil
+      for issue in @issues do
+        @comments = Comment.where(issue_id: issue.id)
+      end
+
   end
 
   def valid_doi?

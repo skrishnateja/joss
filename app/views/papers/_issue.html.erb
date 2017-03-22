@@ -1,5 +1,21 @@
-hi
-<% issues.each do |issue| %>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<div class="panel-group" id="accordion">
 
-<h1>hi</h1>
+<% issues.each do |issue| %>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href="#<%= issue.id %>"><%= issue.name %></a>
+
+        </div>
+      </div>
+      <div id="<%= issue.id %>" class="panel-collapse collapse">
+      <% comments.each do |comment| %>
+        <div class="panel-body"><%= comment.name %></div>
+        <% end %>
+      </div>
+    </div>
 <% end %>
+</div>
